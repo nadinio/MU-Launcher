@@ -1,0 +1,11 @@
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.exe
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.Muz0r.resources
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.Resources.resources
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.Options.resources
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.vbproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.exe
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.xml
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.pdb
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.pdb
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.xml
+D:\Documents\Visual Studio 2013\Projects\Expiriments\Muz0r Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.vbprojResolveAssemblyReference.cache

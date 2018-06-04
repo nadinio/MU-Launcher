@@ -45,8 +45,6 @@ Public Class Muz0r
             Console.Write("File not found")
         End Try
 
-
-
     End Sub
 
     'setting up xbutton

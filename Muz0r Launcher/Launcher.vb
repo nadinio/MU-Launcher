@@ -3,7 +3,7 @@ Imports System.Threading
 Imports System.Net
 Imports System.IO
 
-Public Class Muz0r
+Public Class MuLauncher
 
     Dim a, b As Integer
     Dim newPoint As New System.Drawing.Point()
@@ -111,7 +111,7 @@ Public Class Muz0r
     'Forums button
     Private Sub forumsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles forumsBtn.Click
         Dim reader As XmlReader = XmlReader.Create("launch.xml")
- 
+
         reader.ReadToFollowing("forumURL")
         Dim forumURL As String = reader.ReadElementContentAsString()
 
@@ -189,7 +189,7 @@ Public Class Muz0r
         Dim clientVer As Double = clientReader.ReadElementContentAsDouble()
 
         'Determine what updates need to be downloaded
-  
+
         serverReader.ReadToFollowing("totalUpdates")
         Dim totalUpdates As Integer = serverReader.ReadElementContentAsInt()
 

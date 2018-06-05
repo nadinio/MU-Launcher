@@ -9,3 +9,15 @@ D:\Users\Nicholas\Workspace\Muz0r Launcher\obj\x86\Debug\Mu Launcher.vbproj.Core
 D:\Users\Nicholas\Workspace\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.exe
 D:\Users\Nicholas\Workspace\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.xml
 D:\Users\Nicholas\Workspace\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.pdb
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.exe
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.pdb
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\bin\Debug\Muz0r Launcher.xml
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Mu Launcher.vbprojAssemblyReference.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.MuLauncher.resources
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.Resources.resources
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r_Launcher.Options.resources
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Mu Launcher.vbproj.GenerateResource.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Mu Launcher.vbproj.CoreCompileInputs.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.exe
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.xml
+D:\Users\Nicholas\Workspace\MU-Launcher\Muz0r Launcher\obj\x86\Debug\Muz0r Launcher.pdb

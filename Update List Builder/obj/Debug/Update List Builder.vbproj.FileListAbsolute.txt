@@ -1,0 +1,12 @@
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\bin\Debug\Update List Builder.exe.config
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\bin\Debug\Update List Builder.exe
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\bin\Debug\Update List Builder.pdb
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\bin\Debug\Update List Builder.xml
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.vbprojAssemblyReference.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update_List_Builder.PatchListBuilder.resources
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update_List_Builder.Resources.resources
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.vbproj.GenerateResource.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.vbproj.CoreCompileInputs.cache
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.exe
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.xml
+D:\Users\Nicholas\Workspace\MU-Launcher\Update List Builder\obj\Debug\Update List Builder.pdb

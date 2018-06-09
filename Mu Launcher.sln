@@ -5,16 +5,30 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mu Launcher", "Muz0r Launcher\Mu Launcher.vbproj", "{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Update List Builder", "Update List Builder\Update List Builder.vbproj", "{58838B57-A866-480C-BC8A-797F2E0B7664}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Debug|x86.ActiveCfg = Debug|x86
 		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Debug|x86.Build.0 = Debug|x86
+		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Release|Any CPU.ActiveCfg = Release|x86
 		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Release|x86.ActiveCfg = Release|x86
 		{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}.Release|x86.Build.0 = Release|x86
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Debug|x86.Build.0 = Debug|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Release|x86.ActiveCfg = Release|Any CPU
+		{58838B57-A866-480C-BC8A-797F2E0B7664}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

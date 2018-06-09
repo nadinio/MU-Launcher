@@ -28,6 +28,7 @@ Public Class MuLauncher
         'Setting the transparent background
         Me.BackColor = Color.Empty
         TransparencyKey = Me.BackColor
+        System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
 
         'navigate webpage
         Try
@@ -247,18 +248,15 @@ Public Class MuLauncher
         Next i
 
         'change the client version!
-
         Dim clientXml As XmlDocument = New XmlDocument()
         clientXml.Load("launch.xml")
         clientXml.DocumentElement("clientVer").InnerText = serverVer.ToString
         clientXml.Save("launch.xml")
 
-        ' PRESS START TO PLAY after update
-        ' Enable start button
-
-
+        'allow launcher to launch
+        Me.lblUpdateCheck.Text = "Client has been updated, press start to play!"
+        Me.strtbtn.Visible = True
 
     End Sub
-
 End Class
 

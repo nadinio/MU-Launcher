@@ -130,8 +130,6 @@ Public Class MuLauncher
     End Sub
 
     Private Sub Form1_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
-
-
         Me.strtbtn.Visible = False
 
         Try

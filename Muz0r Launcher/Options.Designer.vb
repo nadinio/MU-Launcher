@@ -22,7 +22,6 @@ Partial Class Options
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Options))
         Me.txtAcct = New System.Windows.Forms.TextBox()
         Me.chkWinMode = New System.Windows.Forms.CheckBox()
         Me.chkMusic = New System.Windows.Forms.CheckBox()
@@ -46,6 +45,7 @@ Partial Class Options
         Me.txtAcct.Name = "txtAcct"
         Me.txtAcct.Size = New System.Drawing.Size(97, 20)
         Me.txtAcct.TabIndex = 1
+        Me.txtAcct.Text = "Account Name"
         '
         'chkWinMode
         '
@@ -53,8 +53,9 @@ Partial Class Options
         Me.chkWinMode.BackColor = System.Drawing.Color.Transparent
         Me.chkWinMode.Location = New System.Drawing.Point(109, 292)
         Me.chkWinMode.Name = "chkWinMode"
-        Me.chkWinMode.Size = New System.Drawing.Size(15, 14)
+        Me.chkWinMode.Size = New System.Drawing.Size(75, 17)
         Me.chkWinMode.TabIndex = 3
+        Me.chkWinMode.Text = "Win Mode"
         Me.chkWinMode.UseVisualStyleBackColor = False
         '
         'chkMusic
@@ -63,8 +64,9 @@ Partial Class Options
         Me.chkMusic.BackColor = System.Drawing.Color.Transparent
         Me.chkMusic.Location = New System.Drawing.Point(40, 330)
         Me.chkMusic.Name = "chkMusic"
-        Me.chkMusic.Size = New System.Drawing.Size(15, 14)
+        Me.chkMusic.Size = New System.Drawing.Size(90, 17)
         Me.chkMusic.TabIndex = 4
+        Me.chkMusic.Text = "Music On/Off"
         Me.chkMusic.UseVisualStyleBackColor = False
         '
         'chkSound
@@ -73,8 +75,9 @@ Partial Class Options
         Me.chkSound.BackColor = System.Drawing.Color.Transparent
         Me.chkSound.Location = New System.Drawing.Point(187, 330)
         Me.chkSound.Name = "chkSound"
-        Me.chkSound.Size = New System.Drawing.Size(15, 14)
+        Me.chkSound.Size = New System.Drawing.Size(93, 17)
         Me.chkSound.TabIndex = 5
+        Me.chkSound.Text = "Sound On/Off"
         Me.chkSound.UseVisualStyleBackColor = False
         '
         'grpRes
@@ -94,9 +97,10 @@ Partial Class Options
         Me.rad12801024.AutoSize = True
         Me.rad12801024.Location = New System.Drawing.Point(184, 17)
         Me.rad12801024.Name = "rad12801024"
-        Me.rad12801024.Size = New System.Drawing.Size(14, 13)
+        Me.rad12801024.Size = New System.Drawing.Size(78, 17)
         Me.rad12801024.TabIndex = 2
         Me.rad12801024.TabStop = True
+        Me.rad12801024.Text = "1280x1024"
         Me.rad12801024.UseVisualStyleBackColor = True
         '
         'rad1024768
@@ -104,9 +108,10 @@ Partial Class Options
         Me.rad1024768.AutoSize = True
         Me.rad1024768.Location = New System.Drawing.Point(92, 17)
         Me.rad1024768.Name = "rad1024768"
-        Me.rad1024768.Size = New System.Drawing.Size(14, 13)
+        Me.rad1024768.Size = New System.Drawing.Size(72, 17)
         Me.rad1024768.TabIndex = 1
         Me.rad1024768.TabStop = True
+        Me.rad1024768.Text = "1024x768"
         Me.rad1024768.UseVisualStyleBackColor = True
         '
         'rad800600
@@ -114,9 +119,10 @@ Partial Class Options
         Me.rad800600.AutoSize = True
         Me.rad800600.Location = New System.Drawing.Point(7, 17)
         Me.rad800600.Name = "rad800600"
-        Me.rad800600.Size = New System.Drawing.Size(14, 13)
+        Me.rad800600.Size = New System.Drawing.Size(66, 17)
         Me.rad800600.TabIndex = 0
         Me.rad800600.TabStop = True
+        Me.rad800600.Text = "800x600"
         Me.rad800600.UseVisualStyleBackColor = True
         '
         'grpColor
@@ -135,9 +141,10 @@ Partial Class Options
         Me.rad32bit.AutoSize = True
         Me.rad32bit.Location = New System.Drawing.Point(105, 19)
         Me.rad32bit.Name = "rad32bit"
-        Me.rad32bit.Size = New System.Drawing.Size(14, 13)
+        Me.rad32bit.Size = New System.Drawing.Size(48, 17)
         Me.rad32bit.TabIndex = 1
         Me.rad32bit.TabStop = True
+        Me.rad32bit.Text = "32bit"
         Me.rad32bit.UseVisualStyleBackColor = True
         '
         'rad16bit
@@ -145,9 +152,10 @@ Partial Class Options
         Me.rad16bit.AutoSize = True
         Me.rad16bit.Location = New System.Drawing.Point(26, 19)
         Me.rad16bit.Name = "rad16bit"
-        Me.rad16bit.Size = New System.Drawing.Size(14, 13)
+        Me.rad16bit.Size = New System.Drawing.Size(48, 17)
         Me.rad16bit.TabIndex = 0
         Me.rad16bit.TabStop = True
+        Me.rad16bit.Text = "16bit"
         Me.rad16bit.UseVisualStyleBackColor = True
         '
         'xbtn
@@ -165,7 +173,6 @@ Partial Class Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(350, 375)
         Me.Controls.Add(Me.grpColor)
         Me.Controls.Add(Me.grpRes)

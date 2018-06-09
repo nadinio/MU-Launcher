@@ -106,7 +106,7 @@ Partial Class MuLauncher
         Me.lblUpdateCheck.Text = "Checking for Updates..."
         Me.lblUpdateCheck.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Muz0r
+        'MuLauncher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -123,7 +123,7 @@ Partial Class MuLauncher
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Muz0r"
+        Me.Name = "MuLauncher"
         Me.Text = "Muz0r"
         CType(Me.xbtn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.strtbtn, System.ComponentModel.ISupportInitialize).EndInit()

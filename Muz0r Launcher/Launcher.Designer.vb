@@ -40,7 +40,7 @@ Partial Class MuLauncher
         'xbtn
         '
         Me.xbtn.BackColor = System.Drawing.Color.Transparent
-        Me.xbtn.Image = Global.Muz0r_Launcher.My.Resources.Resources.xbutton
+        Me.xbtn.Image = Global.MuLauncher.My.Resources.Resources.xbutton
         Me.xbtn.Location = New System.Drawing.Point(756, 60)
         Me.xbtn.Name = "xbtn"
         Me.xbtn.Size = New System.Drawing.Size(14, 14)
@@ -49,8 +49,8 @@ Partial Class MuLauncher
         '
         'strtbtn
         '
-        Me.strtbtn.BackgroundImage = Global.Muz0r_Launcher.My.Resources.Resources.start_btn
-        Me.strtbtn.Image = Global.Muz0r_Launcher.My.Resources.Resources.start_btn
+        Me.strtbtn.BackgroundImage = Global.MuLauncher.My.Resources.Resources.start_btn
+        Me.strtbtn.Image = Global.MuLauncher.My.Resources.Resources.start_btn
         Me.strtbtn.Location = New System.Drawing.Point(568, 341)
         Me.strtbtn.Name = "strtbtn"
         Me.strtbtn.Size = New System.Drawing.Size(153, 66)
@@ -59,7 +59,7 @@ Partial Class MuLauncher
         '
         'optionbtn
         '
-        Me.optionbtn.Image = Global.Muz0r_Launcher.My.Resources.Resources.optionz
+        Me.optionbtn.Image = Global.MuLauncher.My.Resources.Resources.optionz
         Me.optionbtn.Location = New System.Drawing.Point(468, 392)
         Me.optionbtn.Name = "optionbtn"
         Me.optionbtn.Size = New System.Drawing.Size(84, 15)
@@ -78,7 +78,7 @@ Partial Class MuLauncher
         'webSite
         '
         Me.webSite.BackColor = System.Drawing.Color.Transparent
-        Me.webSite.BackgroundImage = Global.Muz0r_Launcher.My.Resources.Resources.websitebtn
+        Me.webSite.BackgroundImage = Global.MuLauncher.My.Resources.Resources.websitebtn
         Me.webSite.Location = New System.Drawing.Point(117, 360)
         Me.webSite.Name = "webSite"
         Me.webSite.Size = New System.Drawing.Size(84, 15)
@@ -88,7 +88,7 @@ Partial Class MuLauncher
         'forumsBtn
         '
         Me.forumsBtn.BackColor = System.Drawing.Color.Transparent
-        Me.forumsBtn.BackgroundImage = Global.Muz0r_Launcher.My.Resources.Resources.forumsbtn
+        Me.forumsBtn.BackgroundImage = Global.MuLauncher.My.Resources.Resources.forumsbtn
         Me.forumsBtn.Location = New System.Drawing.Point(117, 392)
         Me.forumsBtn.Name = "forumsBtn"
         Me.forumsBtn.Size = New System.Drawing.Size(84, 15)

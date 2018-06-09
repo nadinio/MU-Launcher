@@ -8,9 +8,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Muz0r_Launcher.My.MyApplication</StartupObject>
-    <RootNamespace>Muz0r_Launcher</RootNamespace>
-    <AssemblyName>Muz0r Launcher</AssemblyName>
+    <StartupObject>MuLauncher.My.MyApplication</StartupObject>
+    <RootNamespace>MuLauncher</RootNamespace>
+    <AssemblyName>Mu Launcher</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -42,7 +42,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Muz0r Launcher.xml</DocumentationFile>
+    <DocumentationFile>Mu Launcher.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -52,7 +52,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Muz0r Launcher.xml</DocumentationFile>
+    <DocumentationFile>Mu Launcher.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -68,7 +68,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icon1.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

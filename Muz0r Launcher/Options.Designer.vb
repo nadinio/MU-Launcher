@@ -168,7 +168,7 @@ Partial Class Options
         '
         Me.xbtn.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.xbtn.BackColor = System.Drawing.Color.Transparent
-        Me.xbtn.BackgroundImage = Global.Muz0r_Launcher.My.Resources.Resources.xbutton
+        Me.xbtn.BackgroundImage = Global.MuLauncher.My.Resources.Resources.xbutton
         Me.xbtn.Location = New System.Drawing.Point(316, 17)
         Me.xbtn.Name = "xbtn"
         Me.xbtn.Size = New System.Drawing.Size(14, 14)

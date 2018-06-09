@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mu Launcher", "Muz0r Launcher\Mu Launcher.vbproj", "{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mu Launcher", "Mu Launcher\Mu Launcher.vbproj", "{E4E5C8C1-5F64-455D-B447-BBD5BD130A34}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Update List Builder", "Update List Builder\Update List Builder.vbproj", "{58838B57-A866-480C-BC8A-797F2E0B7664}"
 EndProject

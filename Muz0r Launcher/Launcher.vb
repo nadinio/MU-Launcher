@@ -130,32 +130,29 @@ Public Class MuLauncher
 
     Private Sub Form1_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
 
-        Dim clientReader As XmlReader
-
 
         Me.strtbtn.Visible = False
 
         Try
-            clientReader = XmlReader.Create("launch.xml")
-
+            Dim clientReader As XmlReader = XmlReader.Create("launch.xml")
             'Read the XML files to determine the server version
             clientReader.ReadToFollowing("serverURL")
-            Dim serverXMLpath As String = clientReader.ReadElementContentAsString() & "Updater/serverInfo.xml"
-            Dim serverReader As XmlTextReader = New XmlTextReader(serverXMLpath)
-            serverReader.ReadToFollowing("serverVer")
-            Dim serverVer As Double = serverReader.ReadElementContentAsDouble()
+            Dim serverReader As XmlTextReader = New XmlTextReader(clientReader.ReadElementContentAsString() & "patch/serverinfo.xml")
+            Dim serverVer As Double? = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
 
             'Read client XML to determine clientVersion
-            clientReader.ReadToFollowing("clientVer")
-            Dim clientVer As Double = clientReader.ReadElementContentAsDouble()
+            Dim clientVer As Double? = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble, Double.NaN)
 
             If clientVer < serverVer Then
                 Me.lblUpdateCheck.Text = "Download updates, please wait..."
                 updateThread = New Thread(AddressOf updateTask)
                 updateThread.IsBackground = True
                 updateThread.Start()
-            Else
+            ElseIf clientVer = serverVer Then
                 Me.lblUpdateCheck.Text = "Press start to play!"
+                Me.strtbtn.Visible = True
+            ElseIf clientVer = Double.NaN Or serverVer = Double.NaN Then
+                Me.lblUpdateCheck.Text = "Error reading XML files! Cannot update!"
                 Me.strtbtn.Visible = True
             End If
 
@@ -178,38 +175,38 @@ Public Class MuLauncher
 
         'Read the XML files to determine the server version
         clientReader.ReadToFollowing("serverURL")
-        Dim serverURL As String = clientReader.ReadElementContentAsString()
-        Dim serverXMLpath As String = serverURL & "Updater/serverInfo.xml"
-        Dim serverReader As XmlTextReader = New XmlTextReader(serverXMLpath)
-        serverReader.ReadToFollowing("serverVer")
-        Dim serverVer As Double = serverReader.ReadElementContentAsDouble()
+        Dim serverUrl As String = clientReader.ReadElementContentAsString
+        Dim serverReader As XmlTextReader = New XmlTextReader(serverUrl & "patch/serverinfo.xml")
+        Dim serverVer As Double? = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
 
         'Read client XML to determine clientVersion
-        clientReader.ReadToFollowing("clientVer")
-        Dim clientVer As Double = clientReader.ReadElementContentAsDouble()
+        Dim clientVer As Double? = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble(), Double.NaN)
 
-        'Determine what updates need to be downloaded
+        'Determine what patches need to be downloaded
+        serverReader.ReadToFollowing("patchList")
+        Dim patchList As New ArrayList(serverReader.ReadElementContentAsString.Replace(" ", "").Split(","c))
+        Dim reqPatches As New ArrayList
 
-        serverReader.ReadToFollowing("totalUpdates")
-        Dim totalUpdates As Integer = serverReader.ReadElementContentAsInt()
-
-        ' build the list of patches that must be updated
-        Dim patchList As New ArrayList
-
-        For i As Integer = 1 To totalUpdates
-            serverReader.ReadToFollowing("update" & i)
-            Dim versionTest As Double = serverReader.ReadElementContentAsDouble()
-            If (versionTest > clientVer) Then
-                patchList.Add(versionTest)
+        For Each patch As Double In patchList
+            If (patch > clientVer) Then
+                reqPatches.Add(patch)
             End If
-        Next i
+        Next
+
+
+
 
         ' build the list of files that must be downloaded
         Dim fileList As New ArrayList
         Dim fileListBuilder As New ArrayList
 
-        For i As Integer = 0 To patchList.Count - 1
-            Dim patchPath As String = serverURL & "Updater/" & patchList(patchList.Count - (i + 1)) & "/"
+
+
+
+        For i As Integer = 0 To reqPatches.Count - 1
+            Dim patchPath As String = serverUrl & "/" & reqPatches.Item(i) & "/"
+            Dim files As String() = Directory.GetFiles(patchPath)
+
             Dim patchXMLpath As String = patchPath & patchList(patchList.Count - (i + 1)) & ".xml"
             Dim patchReader As XmlTextReader = New XmlTextReader(patchXMLpath)
 

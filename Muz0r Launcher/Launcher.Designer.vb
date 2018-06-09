@@ -110,7 +110,7 @@ Partial Class MuLauncher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Muz0r_Launcher.My.Resources.Resources.MuLauncher
+        Me.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(870, 470)
         Me.Controls.Add(Me.lblUpdateCheck)

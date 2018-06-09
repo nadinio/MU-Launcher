@@ -29,14 +29,14 @@ Public Class MuLauncher
         Me.BackColor = Color.Empty
         TransparencyKey = Me.BackColor
 
-        Dim reader As XmlReader
-
         'navigate webpage
         Try
-            reader = XmlReader.Create("launch.xml")
+            Dim bannerURL As String
 
-            reader.ReadToFollowing("bannerURL")
-            Dim bannerURL As String = reader.ReadElementContentAsString()
+            Using reader = XmlReader.Create("launch.xml")
+                reader.ReadToFollowing("bannerURL")
+                bannerURL = reader.ReadElementContentAsString()
+            End Using
 
             webby.Navigate(bannerURL)
             Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
@@ -89,15 +89,14 @@ Public Class MuLauncher
 
     ' Website button
     Private Sub webSite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles webSite.Click
+        Dim webURL As String
 
-        Dim reader As XmlReader = XmlReader.Create("launch.xml")
-
-        reader.ReadToFollowing("webURL")
-        Dim webURL As String = reader.ReadElementContentAsString()
+        Using reader As XmlReader = XmlReader.Create("launch.xml")
+            reader.ReadToFollowing("webURL")
+            webURL = reader.ReadElementContentAsString()
+        End Using
 
         System.Diagnostics.Process.Start(webURL)
-
-        reader.Close()
     End Sub
 
     Private Sub webSite_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles webSite.MouseDown
@@ -110,14 +109,15 @@ Public Class MuLauncher
 
     'Forums button
     Private Sub forumsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles forumsBtn.Click
-        Dim reader As XmlReader = XmlReader.Create("launch.xml")
+        Dim forumURL As String
 
-        reader.ReadToFollowing("forumURL")
-        Dim forumURL As String = reader.ReadElementContentAsString()
+        Using reader As XmlReader = XmlReader.Create("launch.xml")
+            reader.ReadToFollowing("forumURL")
+            forumURL = reader.ReadElementContentAsString()
+        End Using
 
         System.Diagnostics.Process.Start(forumURL)
 
-        reader.Close()
     End Sub
 
     Private Sub forumsBtn_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles forumsBtn.MouseDown
@@ -134,14 +134,20 @@ Public Class MuLauncher
         Me.strtbtn.Visible = False
 
         Try
-            Dim clientReader As XmlReader = XmlReader.Create("launch.xml")
-            'Read the XML files to determine the server version
-            clientReader.ReadToFollowing("serverURL")
-            Dim serverReader As XmlTextReader = New XmlTextReader(clientReader.ReadElementContentAsString() & "patch/serverinfo.xml")
-            Dim serverVer As Double? = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
+            Dim clientVer As Double?
+            Dim serverVer As Double?
 
-            'Read client XML to determine clientVersion
-            Dim clientVer As Double? = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble, Double.NaN)
+            Using clientReader As XmlReader = XmlReader.Create("launch.xml")
+                'Read the XML files to determine the server version
+                clientReader.ReadToFollowing("serverURL")
+                Using serverReader As XmlTextReader = New XmlTextReader(clientReader.ReadElementContentAsString() & "patch/serverinfo.xml")
+                    serverVer = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
+
+                    'Read client XML to determine clientVersion
+                    clientVer = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble, Double.NaN)
+                End Using
+            End Using
+
 
             If clientVer < serverVer Then
                 Me.lblUpdateCheck.Text = "Download updates, please wait..."
@@ -156,13 +162,10 @@ Public Class MuLauncher
                 Me.strtbtn.Visible = True
             End If
 
-            clientReader.Close()
-            serverReader.Close()
+
         Catch ex As Exception
             Me.lblUpdateCheck.Text = "Could not connect to server, check your connection!"
         End Try
-
-
 
 
     End Sub
@@ -170,130 +173,91 @@ Public Class MuLauncher
     Private updateThread As Thread
     Private Sub updateTask()
 
-        'pulling in reader from xml
-        Dim clientReader As XmlReader = XmlReader.Create("launch.xml")
-
-        'Read the XML files to determine the server version
-        clientReader.ReadToFollowing("serverURL")
-        Dim serverUrl As String = clientReader.ReadElementContentAsString
-        Dim serverReader As XmlTextReader = New XmlTextReader(serverUrl & "patch/serverinfo.xml")
-        Dim serverVer As Double? = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
-
-        'Read client XML to determine clientVersion
-        Dim clientVer As Double? = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble(), Double.NaN)
-
-        'Determine what patches need to be downloaded
-        serverReader.ReadToFollowing("patchList")
-        Dim patchList As New ArrayList(serverReader.ReadElementContentAsString.Replace(" ", "").Split(","c))
         Dim reqPatches As New ArrayList
+        Dim serverUrl As String
+        Dim serverVer As Double?
 
-        For Each patch As Double In patchList
-            If (patch > clientVer) Then
-                reqPatches.Add(patch)
-            End If
-        Next
+        'pulling in reader from xml
+        Using clientReader As XmlReader = XmlReader.Create("launch.xml")
+            'Read the XML files to determine the server version
+            clientReader.ReadToFollowing("serverURL")
+            serverUrl = clientReader.ReadElementContentAsString
+            Using serverReader As XmlTextReader = New XmlTextReader(serverUrl & "patch/serverinfo.xml")
+                serverVer = If(serverReader.ReadToFollowing("serverVer"), serverReader.ReadElementContentAsDouble, Double.NaN)
 
+                'Read client XML to determine clientVersion
+                Dim clientVer As Double? = If(clientReader.ReadToFollowing("clientVer"), clientReader.ReadElementContentAsDouble(), Double.NaN)
 
+                'Determine what patches need to be downloaded
+                serverReader.ReadToFollowing("patchList")
+                Dim patchList As New ArrayList(serverReader.ReadElementContentAsString.Replace(" ", "").Split(","c))
+
+                For Each patch As Double In patchList
+                    If (patch > clientVer) Then
+                        reqPatches.Add(patch)
+                    End If
+                Next
+            End Using
+        End Using
 
 
         ' build the list of files that must be downloaded
         Dim fileList As New ArrayList
-        Dim fileListBuilder As New ArrayList
-
-
-
-
-        For i As Integer = 0 To reqPatches.Count - 1
-            Dim patchPath As String = serverUrl & "/" & reqPatches.Item(i) & "/"
-            Dim files As String() = Directory.GetFiles(patchPath)
-
-            Dim patchXMLpath As String = patchPath & patchList(patchList.Count - (i + 1)) & ".xml"
-            Dim patchReader As XmlTextReader = New XmlTextReader(patchXMLpath)
-
-            patchReader.ReadToFollowing("totalFiles")
-            Dim totalFilesInPatch As Integer = patchReader.ReadElementContentAsInt()
-
-
-
-            For j As Integer = 1 To totalFilesInPatch
-                patchReader.ReadToFollowing("file" & j)
-                Dim fileString As String = patchReader.ReadElementContentAsString()
-
-                If fileListBuilder.Contains(fileString) Then
-                    ' Do nothing
-                Else
-                    fileListBuilder.Add(fileString)
-                    fileList.Add(patchPath & fileString)
-                End If
-            Next j
-
-        Next i
-
-
+        Dim downloadList As New ArrayList
         Dim path As String = Directory.GetCurrentDirectory()
 
+        For i As Integer = 0 To reqPatches.Count - 1
+            Dim patchPath As String = serverUrl & "patch/" & reqPatches.Item(i) & "/"
+            Dim request = DirectCast(WebRequest.Create(patchPath & "filelist.txt"), HttpWebRequest)
+            Dim response = DirectCast(request.GetResponse(), HttpWebResponse)
+            Using sr As New StreamReader(response.GetResponseStream())
+                Do While sr.Peek() >= 0
+                    fileList.Add(sr.ReadLine())
+                Loop
+                fileList.Remove("[File List]")
+            End Using
 
-        'download files into a Downloads directory
-        Dim wc As New WebClient()
-        Dim x As Integer = 0
-        For Each File In fileList
-            Dim lastElement As Integer = fileList(x).ToString.Split("/").Length
-
-            If Directory.Exists(path & "\Downloads") = False Then
-                Directory.CreateDirectory(path & "\Downloads")
-            End If
-
-            wc.DownloadFile(fileList(x), path & "\Downloads\" & fileList(x).ToString.Split("/")(lastElement - 1))
-            x += 1
-        Next
-
-        ' Moving files into correct directories
-        For i As Integer = 0 To fileListBuilder.Count - 1
-            Dim directoryArray() As String = fileListBuilder(i).ToString.Split("/")
-            Dim directoryString As String = ""
-
-            If (directoryArray.Length > 1) Then
-                For j As Integer = 0 To directoryArray.Length - 2
-                    directoryString = directoryString & "\" & directoryArray(j)
-                Next j
-
-                If Directory.Exists(path & directoryString) = False Then
-                    Directory.CreateDirectory(path & directoryString)
+            For Each file As String In fileList
+                If (System.IO.File.Exists(path & file)) Then
+                    System.IO.File.Delete(path & file)
                 End If
+                downloadList.Add(patchPath & file.Replace("\", "/"))
+            Next
 
-                If File.Exists(path & directoryString & "\" & directoryArray(directoryArray.Length - 1)) Then
-                    File.Delete(path & directoryString & "\" & directoryArray(directoryArray.Length - 1))
-                    File.Move(path & "\Downloads\" & directoryArray(directoryArray.Length - 1), path & directoryString & "\" & directoryArray(directoryArray.Length - 1))
-                Else
-                    File.Move(path & "\Downloads\" & directoryArray(directoryArray.Length - 1), path & directoryString & "\" & directoryArray(directoryArray.Length - 1))
-                End If
-            Else
-                If File.Exists(path & "\" & directoryArray(directoryArray.Length - 1)) Then
-                    File.Delete(path & "\" & directoryArray(directoryArray.Length - 1))
-                    File.Move(path & "\Downloads\" & directoryArray(directoryArray.Length - 1), path & "\" & directoryArray(directoryArray.Length - 1))
-                Else
-                    File.Move(path & "\Downloads\" & directoryArray(directoryArray.Length - 1), path & "\" & directoryArray(directoryArray.Length - 1))
-                End If
-            End If
+            ' Download dem files.
+            Using wc As New WebClient
+                For Each file In downloadList
+                    Dim saveLoc As String = path & file.Replace(patchPath, "\")
+                    saveLoc = saveLoc.Replace("/", "\")
+
+                    Dim directoryBuilder As String() = saveLoc.Split("\")
+                    Dim directoryPath As String = ""
+
+                    For j As Integer = 0 To directoryBuilder.Length - 2
+                        directoryPath = directoryPath & directoryBuilder(j) & "\"
+                    Next j
+
+                    If (System.IO.Directory.Exists(directoryPath) = False) Then
+                        System.IO.Directory.CreateDirectory(directoryPath)
+                    End If
+                    wc.DownloadFile(New Uri(file), saveLoc)
+                Next
+            End Using
+
         Next i
 
-        Directory.Delete(path & "\Downloads\")
-
-
-        clientReader.Close()
-
         'change the client version!
-        'Dim clientWriter As XmlWriter = XmlWriter.Create("launch.xml")
-        'clientWriter.WriteElementString("clientVer", serverVer)
 
-
-        Console.WriteLine("Files downloaded!")
+        Dim clientXml As XmlDocument = New XmlDocument()
+        clientXml.Load("launch.xml")
+        clientXml.DocumentElement("clientVer").InnerText = serverVer.ToString
+        clientXml.Save("launch.xml")
 
         ' PRESS START TO PLAY after update
         ' Enable start button
 
 
-        serverReader.Close()
+
     End Sub
 
 End Class

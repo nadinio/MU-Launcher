@@ -34,6 +34,9 @@ Partial Class Options
         Me.rad32bit = New System.Windows.Forms.RadioButton()
         Me.rad16bit = New System.Windows.Forms.RadioButton()
         Me.xbtn = New System.Windows.Forms.PictureBox()
+        Me.rad1366768 = New System.Windows.Forms.RadioButton()
+        Me.rad640480 = New System.Windows.Forms.RadioButton()
+        Me.rad16001280 = New System.Windows.Forms.RadioButton()
         Me.grpRes.SuspendLayout()
         Me.grpColor.SuspendLayout()
         CType(Me.xbtn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,19 +86,22 @@ Partial Class Options
         'grpRes
         '
         Me.grpRes.BackColor = System.Drawing.Color.Transparent
+        Me.grpRes.Controls.Add(Me.rad16001280)
+        Me.grpRes.Controls.Add(Me.rad640480)
+        Me.grpRes.Controls.Add(Me.rad1366768)
         Me.grpRes.Controls.Add(Me.rad12801024)
         Me.grpRes.Controls.Add(Me.rad1024768)
         Me.grpRes.Controls.Add(Me.rad800600)
         Me.grpRes.Location = New System.Drawing.Point(43, 54)
         Me.grpRes.Name = "grpRes"
-        Me.grpRes.Size = New System.Drawing.Size(278, 44)
+        Me.grpRes.Size = New System.Drawing.Size(278, 70)
         Me.grpRes.TabIndex = 6
         Me.grpRes.TabStop = False
         '
         'rad12801024
         '
         Me.rad12801024.AutoSize = True
-        Me.rad12801024.Location = New System.Drawing.Point(184, 17)
+        Me.rad12801024.Location = New System.Drawing.Point(6, 40)
         Me.rad12801024.Name = "rad12801024"
         Me.rad12801024.Size = New System.Drawing.Size(78, 17)
         Me.rad12801024.TabIndex = 2
@@ -106,7 +112,7 @@ Partial Class Options
         'rad1024768
         '
         Me.rad1024768.AutoSize = True
-        Me.rad1024768.Location = New System.Drawing.Point(92, 17)
+        Me.rad1024768.Location = New System.Drawing.Point(180, 19)
         Me.rad1024768.Name = "rad1024768"
         Me.rad1024768.Size = New System.Drawing.Size(72, 17)
         Me.rad1024768.TabIndex = 1
@@ -117,7 +123,7 @@ Partial Class Options
         'rad800600
         '
         Me.rad800600.AutoSize = True
-        Me.rad800600.Location = New System.Drawing.Point(7, 17)
+        Me.rad800600.Location = New System.Drawing.Point(92, 19)
         Me.rad800600.Name = "rad800600"
         Me.rad800600.Size = New System.Drawing.Size(66, 17)
         Me.rad800600.TabIndex = 0
@@ -130,9 +136,9 @@ Partial Class Options
         Me.grpColor.BackColor = System.Drawing.Color.Transparent
         Me.grpColor.Controls.Add(Me.rad32bit)
         Me.grpColor.Controls.Add(Me.rad16bit)
-        Me.grpColor.Location = New System.Drawing.Point(75, 155)
+        Me.grpColor.Location = New System.Drawing.Point(87, 164)
         Me.grpColor.Name = "grpColor"
-        Me.grpColor.Size = New System.Drawing.Size(220, 40)
+        Me.grpColor.Size = New System.Drawing.Size(193, 40)
         Me.grpColor.TabIndex = 7
         Me.grpColor.TabStop = False
         '
@@ -168,6 +174,39 @@ Partial Class Options
         Me.xbtn.Size = New System.Drawing.Size(14, 14)
         Me.xbtn.TabIndex = 0
         Me.xbtn.TabStop = False
+        '
+        'rad1366768
+        '
+        Me.rad1366768.AutoSize = True
+        Me.rad1366768.Location = New System.Drawing.Point(92, 40)
+        Me.rad1366768.Name = "rad1366768"
+        Me.rad1366768.Size = New System.Drawing.Size(72, 17)
+        Me.rad1366768.TabIndex = 3
+        Me.rad1366768.TabStop = True
+        Me.rad1366768.Text = "1366x768"
+        Me.rad1366768.UseVisualStyleBackColor = True
+        '
+        'rad640480
+        '
+        Me.rad640480.AutoSize = True
+        Me.rad640480.Location = New System.Drawing.Point(6, 19)
+        Me.rad640480.Name = "rad640480"
+        Me.rad640480.Size = New System.Drawing.Size(66, 17)
+        Me.rad640480.TabIndex = 4
+        Me.rad640480.TabStop = True
+        Me.rad640480.Text = "640x480"
+        Me.rad640480.UseVisualStyleBackColor = True
+        '
+        'rad16001280
+        '
+        Me.rad16001280.AutoSize = True
+        Me.rad16001280.Location = New System.Drawing.Point(180, 40)
+        Me.rad16001280.Name = "rad16001280"
+        Me.rad16001280.Size = New System.Drawing.Size(78, 17)
+        Me.rad16001280.TabIndex = 5
+        Me.rad16001280.TabStop = True
+        Me.rad16001280.Text = "1600x1280"
+        Me.rad16001280.UseVisualStyleBackColor = True
         '
         'Options
         '
@@ -205,4 +244,7 @@ Partial Class Options
     Friend WithEvents grpColor As System.Windows.Forms.GroupBox
     Friend WithEvents rad32bit As System.Windows.Forms.RadioButton
     Friend WithEvents rad16bit As System.Windows.Forms.RadioButton
+    Friend WithEvents rad640480 As RadioButton
+    Friend WithEvents rad1366768 As RadioButton
+    Friend WithEvents rad16001280 As RadioButton
 End Class

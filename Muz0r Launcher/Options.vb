@@ -104,12 +104,18 @@ Public Class Options
             musicVal = 0
         End If
 
-        If rad800600.Checked Then
+        If rad640480.Checked Then
+            resVal = 0
+        ElseIf rad800600.Checked Then
             resVal = 1
         ElseIf rad1024768.Checked Then
             resVal = 2
         ElseIf rad12801024.Checked Then
             resVal = 3
+        ElseIf rad16001280.Checked Then
+            resVal = 4
+        ElseIf rad1366768.Checked Then
+            resVal = 5
         End If
 
 

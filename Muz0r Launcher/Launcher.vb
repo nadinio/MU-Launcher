@@ -202,11 +202,11 @@ Public Class MuLauncher
 
 
         ' build the list of files that must be downloaded
-        Dim fileList As New ArrayList
-        Dim downloadList As New ArrayList
         Dim path As String = Directory.GetCurrentDirectory()
 
         For i As Integer = 0 To reqPatches.Count - 1
+            Dim fileList As New ArrayList
+            Dim downloadList As New ArrayList
             Dim patchPath As String = serverUrl & "patch/" & reqPatches.Item(i) & "/"
             Dim request = DirectCast(WebRequest.Create(patchPath & "filelist.txt"), HttpWebRequest)
             Dim response = DirectCast(request.GetResponse(), HttpWebResponse)

@@ -1,5 +1,0 @@
-[File List]
-file1.txt
-filelist.txt
-folder\file2.txt
-folder\folder1\file3.txt

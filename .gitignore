@@ -6,4 +6,7 @@
 /.vs/Mu Launcher/v15/Server/sqlite3
 /Mu Launcher/bin/Debug
 /Mu Launcher/obj/x86/Debug/*
+/Update List Builder/bin/Debug
+/Update List Builder/obj/x86/Debug/*
+/Update List Builder/obj/Debug/*
 

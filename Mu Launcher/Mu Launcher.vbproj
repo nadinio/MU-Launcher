@@ -194,6 +194,7 @@
   <ItemGroup>
     <Content Include="Ionic.Utils.Zip.dll" />
     <Content Include="launch.xml" />
+    <Content Include="serverinfo.xml" />
     <None Include="Resources\Icon1.ico" />
     <None Include="Resources\options.png" />
     <None Include="Resources\MuLauncher.png" />

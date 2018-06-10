@@ -19,7 +19,6 @@ Public Class PatchListBuilder
         End If
 
         Dim textWriter As New System.IO.StreamWriter(txtDirectory.Text & "\filelist.txt")
-        textWriter.WriteLine("[File List]")
 
         For i As Integer = 0 To files.Length - 1
             files(i) = files(i).Replace(txtDirectory.Text & "\", "")

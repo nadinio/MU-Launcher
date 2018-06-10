@@ -205,44 +205,49 @@ Public Class MuLauncher
 
         For i As Integer = 0 To reqPatches.Count - 1
             Dim fileList As New ArrayList
-            Dim downloadList As New ArrayList
+            Dim CRCList As New ArrayList
+            Dim downloadList As New Dictionary(Of String, String)
             Dim patchPath As String = serverUrl & "patch/" & reqPatches.Item(i) & "/"
             Dim request = DirectCast(WebRequest.Create(patchPath & "filelist.txt"), HttpWebRequest)
             Dim response = DirectCast(request.GetResponse(), HttpWebResponse)
             Using sr As New StreamReader(response.GetResponseStream())
                 Do While sr.Peek() >= 0
-                    fileList.Add(sr.ReadLine())
+                    Dim splitLine As String() = sr.ReadLine.Split(",")
+                    fileList.Add(splitLine(0))
+                    CRCList.Add(splitLine(1).Replace(" ", ""))
                 Loop
-                fileList.Remove("[File List]")
             End Using
 
-            For Each file As String In fileList
-                If (System.IO.File.Exists(path & file)) Then
-                    System.IO.File.Delete(path & file)
-                End If
-                downloadList.Add(patchPath & file.Replace("\", "/"))
-            Next
+            For j As Integer = 0 To fileList.Count - 1
+                downloadList.Add(patchPath & fileList(j).Replace("\", "/"), CRCList(j))
+            Next j
 
             ' Download dem files.
-            Using wc As New WebClient
-                For Each file In downloadList
-                    Dim saveLoc As String = path & file.Replace(patchPath, "\")
-                    saveLoc = saveLoc.Replace("/", "\")
+            For Each kvp As KeyValuePair(Of String, String) In downloadList
+                Dim saveLoc As String = path & kvp.Key.Replace(patchPath, "\")
+                saveLoc = saveLoc.Replace("/", "\")
 
-                    Dim directoryBuilder As String() = saveLoc.Split("\")
-                    Dim directoryPath As String = ""
+                Dim directoryBuilder As String() = saveLoc.Split("\")
+                Dim directoryPath As String = ""
 
-                    For j As Integer = 0 To directoryBuilder.Length - 2
-                        directoryPath = directoryPath & directoryBuilder(j) & "\"
-                    Next j
+                For j As Integer = 0 To directoryBuilder.Length - 2
+                    directoryPath = directoryPath & directoryBuilder(j) & "\"
+                Next j
 
-                    If (System.IO.Directory.Exists(directoryPath) = False) Then
-                        System.IO.Directory.CreateDirectory(directoryPath)
+                If (IO.Directory.Exists(directoryPath) = False) Then
+                    IO.Directory.CreateDirectory(directoryPath)
+                End If
+
+                Do
+                    If (IO.File.Exists(saveLoc)) Then
+                        IO.File.Delete(saveLoc)
                     End If
-                    wc.DownloadFile(New Uri(file), saveLoc)
-                Next
-            End Using
+                    Using wc As New WebClient
+                        wc.DownloadFile(New Uri(kvp.Key), saveLoc)
+                    End Using
+                Loop Until kvp.Value.Equals(GetCRC32(saveLoc))
 
+            Next
         Next i
 
         'change the client version!
@@ -256,5 +261,49 @@ Public Class MuLauncher
         Me.strtbtn.Visible = True
 
     End Sub
+
+    'The author of this CRC32 code is Tim Hartwig.
+    Public Function GetCRC32(ByVal sFileName As String) As String
+        Try
+            Using FS As FileStream = New FileStream(sFileName, FileMode.Open, FileAccess.Read, FileShare.Read, 8192)
+
+
+                Dim CRC32Result As Integer = &HFFFFFFFF
+                Dim Buffer(4096) As Byte
+                Dim ReadSize As Integer = 4096
+                Dim Count As Integer = FS.Read(Buffer, 0, ReadSize)
+                Dim CRC32Table(256) As Integer
+                Dim DWPolynomial As Integer = &HEDB88320
+                Dim DWCRC As Integer
+                Dim i As Integer, j As Integer, n As Integer
+                'Create CRC32 Table
+                For i = 0 To 255
+                    DWCRC = i
+                    For j = 8 To 1 Step -1
+                        If (DWCRC And 1) Then
+                            DWCRC = ((DWCRC And &HFFFFFFFE) \ 2&) And &H7FFFFFFF
+                            DWCRC = DWCRC Xor DWPolynomial
+                        Else
+                            DWCRC = ((DWCRC And &HFFFFFFFE) \ 2&) And &H7FFFFFFF
+                        End If
+                    Next j
+                    CRC32Table(i) = DWCRC
+                Next i
+                'Calcualting CRC32 Hash
+                Do While (Count > 0)
+                    For i = 0 To Count - 1
+                        n = (CRC32Result And &HFF) Xor Buffer(i)
+                        CRC32Result = ((CRC32Result And &HFFFFFF00) \ &H100) And &HFFFFFF
+                        CRC32Result = CRC32Result Xor CRC32Table(n)
+                    Next i
+                    Count = FS.Read(Buffer, 0, ReadSize)
+                Loop
+
+                Return Hex(Not (CRC32Result))
+            End Using
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
 End Class
 
